@@ -54,13 +54,11 @@ public class BrickManager : MonoBehaviour
         FindSpacing();
         FindStartingSpot();
 
-        Vector2 position = startingPosition;
-
         for (int i = 0; i < rowCount; i += 1) {
             for (int j = 0; j < columnCount; j += 1) {
-                float x = position.x + j * brickSize.x;
-                float y = position.y - i * brickSize.y;
-                position = new Vector2(x, y);
+                float x = startingPosition.x + j * horizontalSpacing;
+                float y = startingPosition.y - i * verticalSpacing;
+                Vector2 position = new Vector2(x, y);
                 CreateBrick(position);
             }
         }
