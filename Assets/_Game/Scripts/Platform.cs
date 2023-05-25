@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public new Transform transform;
+    [SerializeField]
+    private Transform _transform;
+    public new Transform transform {
+        get {
+            if (_transform == null) {
+                _transform = GetComponent<Transform>();
+            }
+            return _transform;
+        }
+    }
+
     public Rigidbody2D rb;
     public float multiplier;
     public float maxBounceAngle = 75.0f;
@@ -15,7 +25,6 @@ public class Platform : MonoBehaviour
 
     void Awake()
     {
-        transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
     }
 
