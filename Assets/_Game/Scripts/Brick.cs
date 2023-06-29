@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Brick : MonoBehaviour
-{
+{ 
+    public BrickManager brickManager;
+
     [SerializeField]
     private Transform _transform;
     public new Transform transform {
@@ -53,5 +55,24 @@ public class Brick : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter2D (Collision2D collision)
+    {
+        Ball ball = collision.gameObject.GetComponent<Ball>();
+        if (ball == null) {
+            return;
+        }
+        DestroyBrick();
+        brickManager.Destroy(this);
+    }
+
+    public void DestroyBrick()
+    {
+#if UNITY_EDITOR
+        Destroy(gameObject);
+#else
+        DestoryImmediate(gameObject);
+#endif
     }
 }

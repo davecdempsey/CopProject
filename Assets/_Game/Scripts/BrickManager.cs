@@ -40,6 +40,7 @@ public class BrickManager : MonoBehaviour
 
     public float verticalSpacing;
 
+    public int brickDestroyedCount = 0;
 
     void Awake ()
     {
@@ -67,6 +68,7 @@ public class BrickManager : MonoBehaviour
     private void CreateBrick(Vector2 position)
     {
         Brick newBrick = Instantiate(brickPrefab, position, Quaternion.identity, null).GetComponent<Brick>();
+        newBrick.brickManager = this;
         bricks.Add(newBrick);
     }
 
@@ -91,5 +93,10 @@ public class BrickManager : MonoBehaviour
 #endif
         }
         bricks.Clear();
+    }
+
+    public void Destroy (Brick brick)
+    {
+        bricks.Remove(brick);
     }
 }
