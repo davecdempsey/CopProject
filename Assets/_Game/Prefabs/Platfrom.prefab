@@ -30,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 2, y: 0.3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1222224835959355328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,9 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c519071c21a04868b9dccf779bd0003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 0}
+  _transform: {fileID: 0}
   rb: {fileID: 0}
   multiplier: 9
+  maxBounceAngle: 75
+  ballRB: {fileID: 0}
+  isBallAttached: 1
+  initialForce: 700
+  startingSpot: {fileID: 1222224835959355328}
 --- !u!50 &1351415511886110666
 Rigidbody2D:
   serializedVersion: 4
@@ -147,3 +153,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &3845291231441997341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222224835959355328}
+  m_Layer: 0
+  m_Name: Starting Spot
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222224835959355328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3845291231441997341}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.005, y: 1.2333329, z: 0}
+  m_LocalScale: {x: 0.25, y: 1.6666664, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1351415511886110664}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

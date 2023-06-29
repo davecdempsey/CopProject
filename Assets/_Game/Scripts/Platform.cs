@@ -23,6 +23,8 @@ public class Platform : MonoBehaviour
     public bool isBallAttached = true;
     public float initialForce = 100.0f;
 
+    public Transform startingSpot;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,5 +75,12 @@ public class Platform : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(newAngle, Vector3.forward);
             ball.rigidbody.velocity = rotation * Vector2.up * ball.rigidbody.velocity.magnitude;
         }
+    }
+
+    public void Reset ()
+    {
+        isBallAttached = true;
+        ballRB.transform.position = startingSpot.position;
+        ballRB.gameObject.SetActive(true);
     }
 }
